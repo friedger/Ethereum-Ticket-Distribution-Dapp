@@ -19,7 +19,7 @@ TicketsContract.setProvider(provider);
 
 router.get('/name', (req, res) => {
   TicketsContract.at(contractAddr).then((instance) => {
-    return instance.getEventName.call();
+    return web3.toAscii(instance.getEventName.call());
   }).then((response) => {
     res.send({resp: response.toLocaleString()});
   }).catch((error) => {
@@ -80,4 +80,4 @@ router.get('/paidfor', (req, res) => {
 });
 
 
-module.exports = router; 
+module.exports = router;
